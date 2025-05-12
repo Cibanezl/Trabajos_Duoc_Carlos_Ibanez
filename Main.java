@@ -1,31 +1,35 @@
+
+import java.util.Scanner;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-/**
- *
- * @author Carlos Iba
- */
 public class Main {
     public static void main(String[] args) {
-        // Crear el sistema de teatro con 10 asientos
-        SistemaTeatro teatro = new SistemaTeatro(10);
+        Scanner sc = new Scanner(System.in);
+        Teatro teatro = new Teatro();
 
-        // Crear algunos clientes
-        Cliente cliente1 = new Cliente(1, "Juan Pérez", "Estudiante");
-        Cliente cliente2 = new Cliente(2, "María García", "Tercera Edad");
+        while (true) {
+            System.out.println("=== TEATRO  ===");
+            System.out.println("1. Comprar entradas");
+            System.out.println("2. Ver ventas");
+            System.out.println("3. Salir");
+            System.out.print("Seleccione una opción: ");
 
-        // Agregar clientes al sistema
-        teatro.clientes.add(cliente1);
-        teatro.clientes.add(cliente2);
+            String opcion = sc.nextLine();
 
-        // Probar la venta de entradas
-        teatro.venderEntrada(1, 3); // Cliente 1 compra el asiento 3
-        teatro.venderEntrada(2, 5); // Cliente 2 compra el asiento 5
-
-        // Intentar vender un asiento ya ocupado
-        teatro.venderEntrada(1, 3); // Debe fallar porque el asiento 3 ya fue vendido
+            if (opcion.equals("1")) {
+                teatro.comprar(sc);
+            } else if (opcion.equals("2")) {
+                teatro.verVentas();
+            } else if (opcion.equals("3")) {
+                System.out.println("Gracias por usar el sistema. ¡Hasta luego!");
+                break;
+            } else {
+                System.out.println("Opción inválida. Intente nuevamente.");
+            }
+        }
     }
-}
-
+} 
